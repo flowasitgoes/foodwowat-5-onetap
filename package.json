@@ -1,0 +1,16 @@
+{
+  "name": "simple-web-server",
+  "version": "1.0.0",
+  "description": "简单的网页服务器",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "download": "node download.js",
+    "extract": "node extract_links.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12"
+  }
+} 
