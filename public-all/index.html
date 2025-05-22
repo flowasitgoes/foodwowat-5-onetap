@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计作品集</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --background-color: #f8fafc;
+            --card-background: rgba(255, 255, 255, 0.7);
+            --text-color: #1e293b;
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --card-hover-transform: translateY(-5px);
+            --card-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #0f172a;
+                --card-background: rgba(30, 41, 59, 0.7);
+                --text-color: #f1f5f9;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 2rem;
+            transition: background-color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .card {
+            background: var(--card-background);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--card-transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            grid-column: span 4;
+        }
+
+        .card.large {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+
+        .card.tall {
+            grid-row: span 2;
+        }
+
+        .card.wide {
+            grid-column: span 6;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: var(--card-hover-transform);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.4rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card:hover a {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 1200px) {
+            .grid {
+                grid-template-columns: repeat(8, 1fr);
+            }
+            .card {
+                grid-column: span 4;
+            }
+            .card.large {
+                grid-column: span 4;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                grid-column: span 1;
+            }
+            .card.large, .card.wide {
+                grid-column: span 1;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.6s ease-out forwards;
+            animation-delay: calc(var(--animation-order) * 0.1s);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+    <div class="container">
+        <header>
+            <h1>设计作品集</h1>
+            <p class="subtitle">探索2025年最前沿的设计作品</p>
+        </header>
+        <div class="grid">
+            <div class="card large" style="--animation-order: 1">
+                <a href="/studio-alphonse">Studio-Alphonse</a>
+            </div>
+            <div class="card tall" style="--animation-order: 2">
+                <a href="/casa">Casa Lunara</a>
+            </div>
+            <div class="card" style="--animation-order: 3">
+                <a href="/oh">OH Architecture</a>
+            </div>
+            <div class="card wide" style="--animation-order: 4">
+                <a href="/interior">Interior Design</a>
+            </div>
+            <div class="card" style="--animation-order: 5">
+                <a href="/nite">Nite Riot</a>
+            </div>
+            <div class="card tall" style="--animation-order: 6">
+                <a href="/qudrix">Qudrix</a>
+            </div>
+            <div class="card" style="--animation-order: 7">
+                <a href="/atlaslogie">Atlaslogie</a>
+            </div>
+            <div class="card wide" style="--animation-order: 8">
+                <a href="/siena">Siena Film Foundation</a>
+            </div>
+            <div class="card" style="--animation-order: 9">
+                <a href="/soscale">SoScale</a>
+            </div>
+            <div class="card large" style="--animation-order: 10">
+                <a href="/mirko">Mirko Romanelli</a>
+            </div>
+            <div class="card" style="--animation-order: 11">
+                <a href="/yellow">Yellow Fellow</a>
+            </div>
+            <div class="card tall" style="--animation-order: 12">
+                <a href="/showcase">Showcase</a>
+            </div>
+            <div class="card" style="--animation-order: 13">
+                <a href="/moonbase">Moonbase</a>
+            </div>
+            <div class="card wide" style="--animation-order: 14">
+                <a href="/otherlife">Otherlife Labs</a>
+            </div>
+            <div class="card" style="--animation-order: 15">
+                <a href="/moooor">MOOOOR</a>
+            </div>
+            <div class="card tall" style="--animation-order: 16">
+                <a href="/coinsetters">Coinsetters</a>
+            </div>
+            <div class="card" style="--animation-order: 17">
+                <a href="/cask">Cask Exchange</a>
+            </div>
+            <div class="card wide" style="--animation-order: 18">
+                <a href="/dropbox">Dropbox Brand Guidelines</a>
+            </div>
+            <div class="card" style="--animation-order: 19">
+                <a href="/uncommon">UNCOMMON</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Three.js 背景动画
+        const canvas = document.getElementById('background-canvas');
+        const renderer = new THREE.WebGLRenderer({
+            canvas,
+            alpha: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // 创建粒子系统
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0x6366f1,
+            transparent: true,
+            opacity: 0.8
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // 动画循环
+        function animate() {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.y += 0.001;
+            particlesMesh.rotation.x += 0.0005;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // 响应窗口大小变化
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html> 
