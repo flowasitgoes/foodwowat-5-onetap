@@ -32,12 +32,21 @@ if (fs.existsSync(stateFile)) {
   state = JSON.parse(fs.readFileSync(stateFile, 'utf-8'));
 }
 
-if (state.index < commits.length) {
-  const commit = commits[state.index];
-  execSync(`git checkout ${commit}`);
-  console.log(`已切換到 commit: ${commit}`);
-  state.index++;
-  fs.writeFileSync(stateFile, JSON.stringify(state), 'utf-8');
-} else {
-  console.log('已經切換到最後一個 commit，不再自動切換。');
-} 
+function switchCommit() {
+  if (state.index < commits.length) {
+    const commit = commits[state.index];
+    execSync(`git checkout ${commit}`);
+    console.log(`已切換到 commit: ${commit}`);
+    state.index++;
+    fs.writeFileSync(stateFile, JSON.stringify(state), 'utf-8');
+  } else {
+    console.log('已經切換到最後一個 commit，不再自動切換。');
+    clearInterval(timer);
+  }
+}
+
+// 立即切換一次
+switchCommit();
+
+// 每分鐘切換一次
+const timer = setInterval(switchCommit, 60 * 1000); 
