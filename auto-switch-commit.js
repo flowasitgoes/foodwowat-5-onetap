@@ -62,5 +62,5 @@ function switchCommit() {
 switchCommit();
 
 // 每天切換一次（24小時 = 86400000 毫秒）
-// const timer = setInterval(switchCommit, 24 * 60 * 60 * 1000); 
-const timer = setInterval(switchCommit, 60 * 1000);
+const timer = setInterval(switchCommit, 24 * 60 * 60 * 1000); 
+// const timer = setInterval(switchCommit, 60 * 1000);
