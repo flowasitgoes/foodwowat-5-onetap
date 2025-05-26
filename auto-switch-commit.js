@@ -4,26 +4,27 @@ const path = require('path');
 
 // commit hash 與版型名稱對應
 const commits = [
-  { hash: "77d6b83", name: "Studio-Alphonse" },
-  { hash: "6202d66", name: "Casa Lunara" },
-  { hash: "42f416b", name: "OH Architecture" },
-  { hash: "c2025de", name: "Interior Design" },
-  { hash: "0a278b9", name: "Nite Riot" },
-  { hash: "b65f7b9", name: "Qudrix" },
-  { hash: "ad1505d", name: "Atlaslogie" },
-  { hash: "caebc4b", name: "Siena Film Foundation" },
-  { hash: "31825a4", name: "SoScale" },
-  { hash: "ca41de1", name: "Mirko Romanelli" },
-  { hash: "b4eadce", name: "Yellow Fellow" },
-  { hash: "df08a6b", name: "Showcase" },
-  { hash: "1badb5f", name: "Moonbase" },
-  { hash: "8dc9b17", name: "Otherlife Labs" },
-  { hash: "b75bedd", name: "MOOOOR" },
-  { hash: "c32bb64", name: "Coinsetters" },
-  { hash: "323fc17", name: "Cask Exchange" },
-  { hash: "5384c15", name: "Dropbox Brand Guidelines" },
-  { hash: "d397eeb", name: "UNCOMMON" }
+  { hash: "fe9960e", name: "Studio-Alphonse" },
+  { hash: "4285095", name: "Casa Lunara" },
+  { hash: "e35bc33", name: "OH Architecture" },
+  { hash: "6a575c8", name: "Interior Design" },
+  { hash: "da8b365", name: "Nite Riot" },
+  { hash: "0f9f6eb", name: "Qudrix" },
+  { hash: "2680ed2", name: "Atlaslogie" },
+  { hash: "2d9b31a", name: "Siena Film Foundation" },
+  { hash: "ac3ba0b", name: "SoScale" },
+  { hash: "6fd99a2", name: "Mirko Romanelli" },
+  { hash: "ede1066", name: "Yellow Fellow" },
+  { hash: "84f4cf9", name: "Showcase" },
+  { hash: "4a5d8de", name: "Moonbase" },
+  { hash: "135bb72", name: "Otherlife Labs" },
+  { hash: "f33075d", name: "MOOOOR" },
+  { hash: "c03e768", name: "Coinsetters" },
+  { hash: "ad3cc04", name: "Cask Exchange" },
+  { hash: "d574731", name: "Dropbox Brand Guidelines" },
+  { hash: "7a8ff63", name: "UNCOMMON" }
 ];
+
 
 const stateFile = path.join(__dirname, 'commit_state.json');
 const recordFile = path.join(__dirname, 'records-of-switch-commits.txt');
@@ -61,4 +62,5 @@ function switchCommit() {
 switchCommit();
 
 // 每天切換一次（24小時 = 86400000 毫秒）
-const timer = setInterval(switchCommit, 24 * 60 * 60 * 1000); 
+// const timer = setInterval(switchCommit, 24 * 60 * 60 * 1000); 
+const timer = setInterval(switchCommit, 60 * 1000);
