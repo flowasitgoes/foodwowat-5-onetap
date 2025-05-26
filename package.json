@@ -2,9 +2,10 @@
   "name": "simple-web-server",
   "version": "1.0.0",
   "description": "简单的网页服务器",
-  "main": "server.js",
+  "main": "server-all.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server-all.js",
+    "build": "echo 'No build step required'",
     "download": "node download.js",
     "extract": "node extract_links.js"
   },
