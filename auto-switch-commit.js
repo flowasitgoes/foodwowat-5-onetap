@@ -4,11 +4,11 @@ const path = require('path');
 
 // commit hash 與版型名稱對應
 const commits = [
-  { hash: "fe9960e", name: "Studio-Alphonse" },
+  { hash: "6fd99a2", name: "Studio-Alphonse" },
   { hash: "4285095", name: "Casa Lunara" },
   { hash: "e35bc33", name: "OH Architecture" },
-  { hash: "6a575c8", name: "Interior Design" },
-  { hash: "da8b365", name: "Nite Riot" },
+  { hash: "c078017", name: "Interior Design" },
+  { hash: "7a7c392", name: "Nite Riot" },
   { hash: "0f9f6eb", name: "Qudrix" },
   { hash: "2680ed2", name: "Atlaslogie" },
   { hash: "2d9b31a", name: "Siena Film Foundation" },
