@@ -2,35 +2,35 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-// 依照你提供的順序填入 commit hash
+// 最新的19個 commit hash，依照你剛剛的GitHub畫面順序
 const commits = [
-  "77d6b83", // show 1 cards
-  "6202d66", // show 2 cards
-  "42f416b", // show 3 cards
-  "c2025de", // show 4 cards
-  "0a278b9", // show 5 cards
-  "b65f7b9", // show 6 cards
-  "ad1505d", // show 7 cards
-  "caebc4b", // show 8 cards
-  "31825a4", // show 9 cards
-  "ca41de1", // show 10 cards
-  "b4eadce", // show 11 cards
-  "df08a6b", // show 12 cards
-  "1badb5f", // show 13 cards
-  "8dc9b17", // show 14 cards
-  "b75bedd", // show 15 cards
-  "c32bb64", // show 16 cards
-  "323fc17", // show 17 cards
-  "5384c15", // show 18 cards
-  "d397eeb"  // show 19 cards
+  "8e6e33e", // show 1 cards
+  "84e46b9", // show 2 cards
+  "a0e43c3", // show 3 cards
+  "c078017", // show 4 cards
+  "7a7c392", // show 5 cards
+  "9217a94", // show 6 cards
+  "fe72cfb", // show 7 cards
+  "28e50ed", // show 8 cards
+  "4d34b76", // show 9 cards
+  "1cf749a", // show 10 cards
+  "79fc6af", // show 11 cards
+  "a947afd", // show 12 cards
+  "bca0554", // show 13 cards
+  "a3d66cf", // show 14 cards
+  "218eb7b", // show 15 cards
+  "a126f93", // show 16 cards
+  "78841bb", // show 17 cards
+  "2f9c774", // show 18 cards
+  "9ce5eef"  // show 19 cards
 ];
 
 const stateFile = path.join(__dirname, 'commit_state.json');
-let state = { index: 0 };
-
+// 每次測試前自動重置 commit_state.json
 if (fs.existsSync(stateFile)) {
-  state = JSON.parse(fs.readFileSync(stateFile, 'utf-8'));
+  fs.unlinkSync(stateFile);
 }
+let state = { index: 0 };
 
 function switchCommit() {
   if (state.index < commits.length) {
@@ -45,8 +45,5 @@ function switchCommit() {
   }
 }
 
-// 立即切換一次
-switchCommit();
-
-// 每分鐘切換一次
-const timer = setInterval(switchCommit, 60 * 1000); 
+const timer = setInterval(switchCommit, 60 * 1000);
+switchCommit(); 
