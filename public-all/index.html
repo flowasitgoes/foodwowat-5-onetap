@@ -101,7 +101,9 @@
             overflow: hidden;
             min-height: 300px;
             display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
         }
 
         .card.large {
@@ -127,7 +129,7 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0.3;
+            opacity: 0.1;
             transition: all 0.5s ease;
             z-index: 0;
         }
@@ -142,8 +144,8 @@
         }
 
         .card:hover::before {
-            opacity: 0.7;
-            transform: scale(1.1);
+            opacity: 0.1 ;
+            transform: scale(1.2);
         }
 
         .card::after {
@@ -269,6 +271,57 @@
             background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop');
         }
 
+        .card-image {
+            flex: 1 1 60%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px 16px 0 0;
+            min-height: 180px;
+        }
+
+        .card-image-studio-alphonse {
+            background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop');
+        }
+
+        .card-info {
+            flex: 0 0 auto;
+            background: rgba(255,255,255,0.85);
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 0 16px 16px;
+            color: #1e293b;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #6366f1;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card-desc {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #334155;
+        }
+
+        .card-desc-title {
+            font-weight: bold;
+            color: #6366f1;
+            font-size: 1.08rem;
+            margin-bottom: 0.3em;
+            border-left: 4px solid #6366f1;
+            padding-left: 0.6em;
+            background: linear-gradient(90deg, #f1f5ff 60%, transparent 100%);
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .card-desc-list {
+            margin-left: 1.2em;
+            margin-bottom: 1em;
+            display: block;
+        }
+
         @media (max-width: 1200px) {
             .grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -344,7 +397,20 @@
         </header>
         <div class="grid">
             <div class="card large" style="--animation-order: 1" data-title="Studio-Alphonse">
-                <a href="/studio-alphonse">Studio-Alphonse</a>
+                <div class="card-image card-image-studio-alphonse"></div>
+                <div class="card-info">
+                    <a href="/studio-alphonse" class="card-title">Studio-Alphonse</a>
+                    <div class="card-desc">
+                        <div class="card-desc-title">特色</div>
+                        <div class="card-desc-list">
+                            獨特視覺風格、卡通敘事、Lottie動畫、橫向捲動、自訂游標、高創意與藝術性。
+                        </div>
+                        <div class="card-desc-title">適合產業</div>
+                        <div class="card-desc-list">
+                            影音製作團隊、後期製作工作室、劇團、展覽導覽網站、紀錄片推廣平台、精品手工藝、原創香氛、限量家具、獨立時尚品牌、精緻禮盒品牌、設計師品牌、城市漫遊專案、民宿品牌、地方創生團隊、數位雜誌的特別企劃頁。
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- <div class="card tall" style="--animation-order: 2" data-title="Casa-Lunara">
                 <a href="/casa">Casa Lunara</a>
