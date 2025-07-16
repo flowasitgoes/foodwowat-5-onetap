@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const app = express();
-const port = 3004; // 使用新的端口
+const port = 3003; // 使用新的端口
 
 // 设置静态文件目录
 app.use(express.static(path.join(__dirname, 'public-all')));
