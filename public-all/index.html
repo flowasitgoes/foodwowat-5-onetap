@@ -91,8 +91,8 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
             perspective: 1000px;
-            background: var(--card-background);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
             border-radius: 20px;
             padding: 2rem;
             box-shadow: var(--card-shadow);
@@ -104,6 +104,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: stretch;
+            cursor: pointer;
         }
 
         .card.large {
@@ -129,9 +130,10 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0.1;
+            opacity: 0.3;
             transition: all 0.5s ease;
             z-index: 0;
+            border-radius: 20px;
         }
 
         .card:hover {
@@ -144,8 +146,8 @@
         }
 
         .card:hover::before {
-            opacity: 0.1 ;
-            transform: scale(1.2);
+            opacity: 0.5;
+            transform: scale(1.1);
         }
 
         .card::after {
@@ -157,12 +159,13 @@
             height: 100%;
             background: linear-gradient(45deg, 
                 transparent, 
-                rgba(255, 255, 255, 0.2), 
-                rgba(99, 102, 241, 0.2), 
-                rgba(139, 92, 246, 0.2), 
+                rgba(255, 255, 255, 0.1), 
+                rgba(99, 102, 241, 0.1), 
+                rgba(139, 92, 246, 0.1), 
                 transparent);
             transform: translateX(-100%);
             transition: transform 0.6s;
+            z-index: 1;
         }
 
         .card:hover::after {
@@ -285,41 +288,55 @@
 
         .card-info {
             flex: 0 0 auto;
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.9);
             padding: 1.2rem 1.5rem;
-            border-radius: 0 0 16px 16px;
+            border-radius: 16px;
             color: #1e293b;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #6366f1;
             margin-bottom: 1rem;
             display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
         }
 
         .card-desc {
             font-size: 1rem;
             line-height: 1.5;
             color: #334155;
+            font-weight: 500;
         }
 
         .card-desc-title {
             font-weight: bold;
             color: #6366f1;
-            font-size: 1.08rem;
-            margin-bottom: 0.3em;
+            font-size: 1.1rem;
+            margin-bottom: 0.5em;
             border-left: 4px solid #6366f1;
-            padding-left: 0.6em;
-            background: linear-gradient(90deg, #f1f5ff 60%, transparent 100%);
-            border-radius: 6px;
+            padding: 0.4em 0.8em;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
             display: inline-block;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         .card-desc-list {
             margin-left: 1.2em;
             margin-bottom: 1em;
             display: block;
+            color: #1e293b;
+            font-weight: 500;
+            line-height: 1.6;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
         }
 
         @media (max-width: 1200px) {
@@ -396,7 +413,7 @@
             <p class="subtitle">cutting-edge design 2025</p>
         </header>
         <div class="grid">
-            <div class="card large" style="--animation-order: 1" data-title="Studio-Alphonse">
+            <div class="card" style="--animation-order: 1" data-title="Studio-Alphonse">
                 <div class="card-info">
                     <a href="/studio-alphonse" class="card-title">Studio-Alphonse</a>
                     <div class="card-desc">
@@ -431,7 +448,7 @@
                 </div>
             </div>
             
-            <div class="card wide" style="--animation-order: 4" data-title="Interior-Design">
+            <div class="card" style="--animation-order: 4" data-title="Interior-Design">
                 <div class="card-info">
                     <a href="/interior" class="card-title">Interior Design</a>
                     <div class="card-desc">
@@ -491,7 +508,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card wide" style="--animation-order: 8" data-title="Siena-Film-Foundation">
+            <div class="card" style="--animation-order: 8" data-title="Siena-Film-Foundation">
                 <div class="card-info">
                     <a href="/siena" class="card-title">Siena Film Foundation</a>
                     <div class="card-desc">
@@ -521,7 +538,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card large" style="--animation-order: 10" data-title="Mirko-Romanelli">
+            <div class="card" style="--animation-order: 10" data-title="Mirko-Romanelli">
                 <div class="card-info">
                     <a href="/mirko" class="card-title">Mirko Romanelli</a>
                     <div class="card-desc">
@@ -641,7 +658,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card wide" style="--animation-order: 18" data-title="Dropbox-Brand-Guidelines">
+            <div class="card" style="--animation-order: 18" data-title="Dropbox-Brand-Guidelines">
                 <div class="card-info">
                     <a href="/dropbox" class="card-title">Dropbox Brand Guidelines</a>
                     <div class="card-desc">
